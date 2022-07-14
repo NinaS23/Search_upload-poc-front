@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components"
+import axios from "axios"
 
 
 export default function App() {
@@ -15,6 +16,17 @@ export default function App() {
       setImagem(event.target.result);
     });
   }
+  function DoUpload() {
+    const dataForm = new FormData();
+    for (const file of arquivo) {
+      dataForm.append("file", file);
+    }
+
+    const promise = axios.post("http://localhost:5001/upload", dataForm);
+    promise.then((response) => console.log(response.data));
+    promise.catch((error) => console.log(error.response));
+  }
+ 
 
   console.log(arquivo);
   if (imagem) {
@@ -35,7 +47,7 @@ export default function App() {
               setArquivo([...event.target.files]);
             }}
           />
-          <button>mágica/upload</button>
+          <button onClick={DoUpload}>mágica/upload</button>
         </Content>
       </Conteiner>
     );
@@ -59,7 +71,7 @@ export default function App() {
             }}
           />
           <p>pode clicar no botão acima , e escolher algo</p>
-          <button>mágica/upload</button>
+          <button  onClick={DoUpload}>mágica/upload</button>
         </Content>
       </Conteiner>
     );
