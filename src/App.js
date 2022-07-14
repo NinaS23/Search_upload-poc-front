@@ -11,6 +11,7 @@ export default function App() {
     const reader = new FileReader(); 
     reader.readAsDataURL(arquivo); 
     reader.addEventListener("load", (event) => {
+      console.log("Todos os recursos terminaram o carregamento!")
       setImagem(event.target.result);
     });
   }
@@ -21,11 +22,11 @@ export default function App() {
       <Conteiner image={imagem}>
         <Content>
           <h1>Selecione uma imagem e veja a mágica haha</h1>
-          <label htmlFor="files"><h3>selecionar img</h3></label>
+          <label htmlFor="arquivos"><h3>selecionar img</h3></label>
           <input
             type="file"
             name="files"
-            id="files" // o htmlFor = "aqui tem que fazer referencia ao id"
+            id="arquivos" // o htmlFor = "aqui tem que fazer referencia ao id"
             accept="image/*"
             style={{ display: "none" }}
             onChange={(event) => {
@@ -44,11 +45,11 @@ export default function App() {
       <Conteiner image={imagem}>
         <Content>
           <h1>Selecione uma imagem e veja a mágica haha</h1>
-          <label htmlFor="files"><h3>selecionar img</h3></label>
+          <label htmlFor="arquivos"><h3>selecionar img</h3></label>
           <input
             type="file"
             name="files"
-            id="files" // o htmlFor = "aqui tem que fazer referencia ao id"
+            id="arquivos" // o htmlFor = "aqui tem que fazer referencia ao id"
             accept="image/*"
             style={{ display: "none" }}
             onChange={(event) => {
